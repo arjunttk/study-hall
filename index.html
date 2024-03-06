@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maneesh Chakravarthy</title>
+    <link href="master.css" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="nav-wrapper" id="navbar">
+            <div class="logo">
+                <a class="name">Maneesh Chakravarthy</a>
+            </div>
+            <div class="login-wrapper">
+                <div class="login-button">
+                    <a id="loginButton">
+                        <svg style="color: white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" fill="white"></path>
+                        </svg>
+                            <g>
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+                <div class="login">
+                    <a id="closebutton">X</a>
+                    <form action="login.php" method="POST" id="loginForm">
+                        <a>Admin Login</a>
+                        <input type="text" name="username" id="username" placeholder="username">
+                        <input type="password" name="password" id="password" placeholder="password">
+                        <button class="bt-class" onclick="authenticateAndToggle()">submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </header>
+
+    <main>
+
+        <div class="img">
+            <img src="1.jpg" alt="">
+        </div>
+
+        <div id="notice">
+            <p><strong>Login to Continue</strong>
+        </div>
+
+
+        <div class="index table" id="studyIndex">
+            <a href="studyhall-1.html"> study hall one </a>
+            <a href="studyhall-2.html"> study hall two </a>
+            <a href="studyhall-3.html"> study hall three </a>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <span>© 2024 Maneesh Chakravartthy</span>
+        </div>
+    </footer>
+
+
+    <script>
+        const loginButton = document.getElementById('loginButton');
+        const loginForm = document.querySelector('.login');
+        const closeButton = document.getElementById("closebutton");
+        const html = document.documentElement;
+    
+        loginButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            loginForm.classList.add('show');
+            html.classList.add("dimmed");
+        });
+    
+        document.addEventListener('click', function (e) {
+            const isClickInsideLogin = loginButton.contains(e.target) || loginForm.contains(e.target);
+            if (!isClickInsideLogin && loginForm.classList.contains('show')) {
+                loginForm.classList.remove('show');
+                html.classList.remove("dimmed");
+            }
+        });
+
+        closeButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            loginForm.classList.remove('show');
+            html.classList.remove("dimmed");
+        });  
+
+
+        function authenticateAndToggle() {
+    var predefinedUsername1 = "Maneesh";
+    var predefinedPassword1 = "leader1";
+
+    var predefinedUsername2 = "nagarjuna";
+    var predefinedPassword2 = "Pl@yboy1";
+
+    var predefinedUsername3 = "m";
+    var predefinedPassword3 = "m";
+
+    var enteredUsername = document.getElementById("username").value;
+    var enteredPassword = document.getElementById("password").value;
+
+    // Check authentication
+    if (
+        (enteredUsername === predefinedUsername1 && enteredPassword === predefinedPassword1) ||
+        (enteredUsername === predefinedUsername2 && enteredPassword === predefinedPassword2) ||
+        (enteredUsername === predefinedUsername3 && enteredPassword === predefinedPassword3)
+    ) {
+        // Authentication successful, toggle visibility
+        document.getElementById("studyIndex").style.visibility = "visible";
+        document.getElementById("notice").style.visibility = "hidden";
+        loginForm.classList.remove('show');
+        html.classList.remove("dimmed");
+    } else {
+        // Authentication failed, show an alert or handle accordingly
+        alert("Authentication failed!");
+    }
+}
+
+    </script>
+
+
+</body>
+</html>
